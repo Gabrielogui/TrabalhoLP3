@@ -84,7 +84,98 @@
     padding: 10px 15px;
 }
 
-/* |=======| CORPO 01 |=======| */
+/* |=======| IMAGENS ABAIXO DO MENU |=======| */
+
+.imagens-abaixo-h{
+    height: 420px;
+    width: 935px;
+    overflow: hidden;
+}
+
+.imagens-abaixo-h .imagens-deslizar img{
+    width: 100%;
+    height: 100%;
+}
+
+.navegacao-imagens{
+    position: absolute;
+    bottom: 200px;
+    left: 730px;
+    display: flex;
+}
+
+.barra-nav{
+    width: 15px;
+    height: 15px;
+    border: 2px solid #000000;
+    margin: 6px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.barra-nav:hover{
+    background-color: rgb(56, 93, 64);
+}
+
+
+.input-radio{
+    display: none;
+}
+
+.imagens-deslizar{
+    display: flex;
+    width: 300%;
+}
+
+.img-evento{
+    width: 33.33%;
+    transition: .6s;
+}
+
+/* CLASSE 'IMAGENS-DESLIZAR' QUE CONTÊM A DIV DAS IMAGENS */
+/*.Imagens-deslizar{
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden; /* Esconder as imagens  
+}
+
+.Imagens-deslizar img{
+    position: absolute; /* Deixa as imagens lado a lado 
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    animation: fade 3s infinite;
+}
+
+.slideshow a{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 1;
+    }
+    33%{
+        opacity: 1;
+    }
+    53%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+*/
+
 
 /* |=======| CORPO 02 |=======| */
 

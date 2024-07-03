@@ -1,0 +1,45 @@
+/* TUDO */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ID LOGIN(DIV) */
+#Login{
+    background-color: rgb(56, 93, 64);
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Cetralizando a DIV */
+    padding: 100px;
+    border-radius: 20px;
+}
+
+/* INPUT */
+input{
+    padding: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+/* BOTÃO */
+button{
+    background-color: #cd1111;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* QUANDO PASSAR O CURSOR EM CIMA */
+button:hover{
+    background-color: #991313;
+    cursor: pointer;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
