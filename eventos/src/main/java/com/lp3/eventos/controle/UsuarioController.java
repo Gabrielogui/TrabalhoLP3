@@ -28,7 +28,7 @@ import com.lp3.eventos.transferencia.LoginRequisicao;
 public class UsuarioController {
 
     @Autowired
-    UsuarioRepositorio ur;
+    private UsuarioRepositorio ur;
 
     @GetMapping("/usuarios")
     public Iterable<Usuario> listarUsuarios() {

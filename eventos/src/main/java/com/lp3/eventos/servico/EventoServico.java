@@ -13,11 +13,12 @@ import com.lp3.eventos.repositiorio.EventoRepositorio;
 @Service // Para que o spring entenda que é camada de servico
 public class EventoServico {
     
+    // |=======| AUTOWIRED / ATRIBUTOS |=======|
     @Autowired
-    EventoRepositorio eventoRepositorio;
+    private EventoRepositorio eventoRepositorio;
 
     @Autowired
-    RespostaModelo respostaModelo;
+    private RespostaModelo respostaModelo;
 
     // |=======| CADASTRAR EVENTOS |=======|
     public ResponseEntity<?> cadastrar(@RequestBody Evento evento){

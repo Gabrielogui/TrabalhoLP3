@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lp3.eventos.modelo.Evento;
-import com.lp3.eventos.repositiorio.EventoRepositorio;
+//import com.lp3.eventos.repositiorio.EventoRepositorio;
 import com.lp3.eventos.servico.EventoServico;
 
 @RestController
@@ -22,11 +22,11 @@ import com.lp3.eventos.servico.EventoServico;
 public class EventoController {
     
     // |=======| AUTOWIRED / ATRIBUTOS |=======|
-    @Autowired
-    EventoRepositorio eventoRepositorio;
+    //@Autowired
+    //private EventoRepositorio eventoRepositorio;
 
     @Autowired
-    EventoServico eventoServico;
+    private EventoServico eventoServico;
 
     // |=======| CADASTRAR EVENTOS |=======|
     @PostMapping("/cadastrarEvento")
