@@ -1,0 +1,45 @@
+*|======= SISTEMA DE RESERVAS DE EVENTO =======|*
+
+Classes: 
+
+-> Usuário:
+	Atributos:
+	- id (int)
+	- nome (String)
+	- email (String)
+	- cpf (String)
+	- senha (String)
+	- Evento (evnto)
+
+	Métodos:
+	- Cadastrar usuário
+	- Logar
+
+
+
+-> Evento:
+	Atributos:
+	- id (int)
+	- nome (String)
+	- valor (float/double)
+	- data (date)
+	- descrição (String)
+
+	Métodos:
+	- cadastrar evento
+	- editar evento
+	- excluir evento
+	- consultar evento
+	- listar eventos
+
+-> Ingresso:
+	Atributos:
+	- id (int)
+	- usuário (Usuário)
+	- evento (Evento)
+	
+	Métodos:
+	- compra
+	- visualizar
+	- reembolso
+	

@@ -1,4 +1,4 @@
-/*package com.lp3.eventos.controle;
+package com.lp3.eventos.controle;
 
 //import java.util.Optional;
 
@@ -55,10 +55,10 @@ public class UsuarioController {
     public ResponseEntity<?> alterar(@RequestBody Usuario usuario){
         return usr.cadastrarAlterar(usuario, "alterar");
     }
-    /* 
+     /* 
     public ResponseEntity<?> alterar(@RequestBody Usuario usuario){
         return usr.alterar(usuario);
-    }
+    }*/
 
 
     // ======= REMOVER USUÁRIO =======
@@ -73,10 +73,10 @@ public class UsuarioController {
         return usr.listar();
     }
 
-   /*  @PostMapping("/{email}")
+    /*@PostMapping("/{email}")
     public Usuario selecionarPorEmail(@PathVariable String email){
         return ur.findByEmail(email);
-    }
+    }*/
 
     // ======= LOGIN =======
     @PostMapping("/login")
@@ -88,7 +88,7 @@ public class UsuarioController {
             return ResponseEntity.ok(new LoginResposta(usuario.get().getNome()));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou senha estão incorretos");
-        }
+        }*/
     }
 
     @GetMapping("/")
@@ -98,4 +98,3 @@ public class UsuarioController {
 
     
 }
-*/

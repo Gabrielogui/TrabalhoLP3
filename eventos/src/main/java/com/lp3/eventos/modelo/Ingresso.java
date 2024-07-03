@@ -20,6 +20,9 @@ public class Ingresso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column(name = "valido", nullable = false)
+    private boolean valido = true;
+
     @ManyToOne
     @JoinColumn(name = "evento_id", nullable = false)
     private Evento evento;

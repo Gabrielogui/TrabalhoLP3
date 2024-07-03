@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lp3.eventos.modelo.Evento;
 
-@Repository
+@Repository // Comunicação com o banco de dados
 public interface EventoRepositorio extends JpaRepository<Evento, Long>{
     
 }

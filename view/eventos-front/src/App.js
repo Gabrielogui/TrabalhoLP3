@@ -50,7 +50,7 @@ function App() {
 
   // ======= LOGAR =======
   const logar = (email, senha) => {
-    fetch("http://localhost:8080/cadastrar", {
+    fetch("http://localhost:8080/login", {
       method:'post',
       body:JSON.stringify({email, senha}),
       headers:{

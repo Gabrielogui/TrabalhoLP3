@@ -1,0 +1,56 @@
+package com.lp3.eventos.servico;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.lp3.eventos.modelo.Evento;
+import com.lp3.eventos.modelo.RespostaModelo;
+import com.lp3.eventos.repositiorio.EventoRepositorio;
+
+@Service // Para que o spring entenda que é camada de servico
+public class EventoServico {
+    
+    @Autowired
+    EventoRepositorio eventoRepositorio;
+
+    @Autowired
+    RespostaModelo respostaModelo;
+
+    // |=======| CADASTRAR EVENTOS |=======|
+    public ResponseEntity<?> cadastrar(@RequestBody Evento evento){
+        if(evento.getNome().equals("") || evento.getDescricao().equals("") || evento.getData().equals("")){
+            respostaModelo.setMensagem("Preencha todos os campos");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.CREATED);
+        }
+    }
+
+    // |=======| EDITAR EVENTOS |=======|
+    public ResponseEntity<?> editar(@RequestBody Evento evento){
+        return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.OK);
+    }
+
+    // |=======| REMOVER EVENTOS |=======|
+    public ResponseEntity<?> deletar(Long id){
+        eventoRepositorio.deleteById(id);
+
+        respostaModelo.setMensagem("Deletado com sucesso nessa porra!");
+        return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+    }
+
+    // |=======| CONSULTAR EVENTOS |=======|
+    // SÓ SE TIVER BUSCA
+
+    // |=======| LISTAR EVENTOS |=======|
+    public Iterable<Evento> listar(){
+        return eventoRepositorio.findAll();
+    }
+
+    
+
+
+}
