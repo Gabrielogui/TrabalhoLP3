@@ -30,7 +30,7 @@ function Login({ eventoTeclado, cadastrarUsuario, login }) {
                 <br/><br/>
                 <button onClick={mudandoEstado}>Cadastre-se</button>
                 <br></br> <br></br>
-                <a href='/'>Voltar pra home</a>
+                <a href='/'>Voltar para a página inicial</a>
             </div>
             )
             :
@@ -49,7 +49,7 @@ function Login({ eventoTeclado, cadastrarUsuario, login }) {
                 <br/><br/>
                 <button onClick={mudandoEstado}>Voltar ao login</button>
                 <br></br> <br></br>
-                <a href='/'>Voltar pra home</a>
+                <a href='/'>Voltar para a página inicial</a>
             </div>
             )
             }

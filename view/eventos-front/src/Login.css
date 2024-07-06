@@ -35,7 +35,7 @@ button{
 
 /* QUANDO PASSAR O CURSOR EM CIMA */
 button:hover{
-    background-color: #991313;
+    background-color: #23b93ca4;
     cursor: pointer;
 }
 

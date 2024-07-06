@@ -51,7 +51,11 @@ function Home({ logado }){
 
                         <a href="/" >
                             <div class="cards card2">
-                                <span>Feitos para você</span>
+                                <span><i class="carrinho" style="color: black;"></i></span>
+                                {/* <span>DATA</span>
+                                <span>NOME</span>
+                                <span>LOCAL</span> */}
+                        
                             </div>
                         </a>
 
@@ -91,7 +95,7 @@ function Home({ logado }){
                             </div>
                         </a>
 
-                        <a href="/" >
+                        {/* <a href="/" >
                             <div class="cards card9">
                                 <span>Funk</span>
                             </div>
@@ -137,7 +141,7 @@ function Home({ logado }){
                             <div class="cards card16">
                                 <span>Música Internacional</span>
                             </div>
-                        </a>
+                        </a> */}
                     </section>
                 </div>
 

@@ -5,20 +5,22 @@
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 16px;
-    gap: 16px;
     margin-bottom: 16px;
-    display: grid;
-    gap: 16px;
+    gap: 2px;
     grid-gap: 32px;
+    /* grid-column-gap: 0px; */
     margin: 10px auto;
 }
 
+.offer__list{
+    margin-right: 300px;
+    margin-left: 300px;
+}
 /* ======= CARDS ======= */
 .cards{
     position: relative; 
-    width: 260px;
-    height: 185px;
+    width: 300px;
+    height: 250px;
     overflow: hidden;
     border-radius: 20px;
 }
@@ -27,37 +29,68 @@
 .cards span{
     padding: 16px;
     position: absolute;
-    color: #fff;
+    color: black;
     font-size: 24px;
     font-weight: 700;
+    top: 125px;
 }
 
+/* .carrinho{
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    color: black;
+} */
 /* |=======| COR DOS CARDS |=======| */
 .card1 {
-    background-color: rgb(0, 100, 80);
+    background-color: #FEFCF6;
+    background-image: url('supernova.png');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card2 {
-    background-color: rgb(132, 0, 231);
+    background-color: #FEFCF6;
+    background-image: url('numanice.png');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card3 {
-    background: rgb(30, 50, 100);
+    background-color: #FEFCF6;
+    background-image: url('dennis.png');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card4 {
-    background: rgb(140, 25, 50);
+    background-color: #FEFCF6;
+    background-image: url('baco.webp');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card5 {
-    background: rgb(232, 17, 91);
+    background-color: #FEFCF6;
+    background-image: url('pagogin.png');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card6 {
-    background: rgb(83, 122, 161);
+    background-color: #FEFCF6;
+    background-image: url('arraia.png');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card7 {
-    background: rgb(142, 102, 172);
+    background-color: #FEFCF6;
+    background-image: url('bk.jpeg');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
 .card8 {
-    background: rgb(20, 138, 8);
+    background-color: #FEFCF6;
+    background-image: url('patata.jpeg');
+    background-size: 300px 125px;
+    background-repeat: no-repeat;
 }
-.card9 {
+/* .card9 {
     background: rgb(30, 50, 100);
 }
 .card10 {
@@ -80,10 +113,12 @@
 }
 .card16 {
     background: rgb(142, 102, 172);
-}
+} */
 /* FIM DAS CORES DOS CARDS */
 
 /* |=======| AO PASSAR O CURSOR NOS CARDS |=======| */
 .offer__list-item :hover{
-    transform: scale(1.1);
+    transform: scale(1.02);
+    border: 1px solid grey;
+    border-radius: 20px;
 }
