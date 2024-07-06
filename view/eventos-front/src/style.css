@@ -1,17 +1,28 @@
-/* TUDO */
-*{
+/* |=======| TUDO |=======| */
+body{
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    background-color: #FEFCF6;
 }
 
 /* |=======| MENU SUPERIOR HORIZONTAL |=======| */
+
+/* LOGO */
+#logo{
+    max-width: 8vw;
+}
 
 /* MENU */
 #menu-h{
     list-style-type: none;
     padding: 0;
-    background-color: rgb(56, 93, 64);
+    display: inline;
+    position: absolute;
+    top: 30px;
+    margin-left: 30px;
 }
 
 /* LINHAS *//*
@@ -34,7 +45,7 @@
 
 /* LINKS */
 #menu-h ul li a{
-    color: #fff; /* Cor da letra */
+    color: #83E509; /* Cor da letra */
     padding: 15px; /* Tamanho do Menu */
     display: inline-block;
     text-decoration: none;
@@ -43,8 +54,7 @@
 
 /* APÓS PASSAR O MOUSE NO 'BOTÃO' DA NAVEGAÇÃO */
 #menu-h ul li :hover{
-    background-color: #cd1111;
-    /*color: #cd1111;*/
+    background-color: #CADBB7;
 }
 
 /* ULTIMO ELEMENTO(li) DO ul - BUSCA */
@@ -57,14 +67,12 @@
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    background-color: rgb(56, 93, 64);
+    background-color: #FEFCF6;
     padding: 0px;
     transition: visibility 0s, opacity 0.3s linear;
-    top: 190%; /* deixa abaixo */
     left: 0;
     z-index: 1;
     text-align: center;
-    color: #fff;
 }
 
 /* SUBLINHAS */
@@ -76,7 +84,7 @@
 #menu-h ul :hover > ul{
     visibility: visible;
     opacity: 1;
-    background-color: rgb(56, 93, 64);
+    background-color: #FEFCF6;
 }
 
 /* LINKS DA SUBNAVEGAÇÃO */
@@ -84,105 +92,21 @@
     padding: 10px 15px;
 }
 
-/* |=======| IMAGENS ABAIXO DO MENU |=======| */
-/*
-.imagens-abaixo-h{
-    height: 420px;
-    width: 935px;
-    overflow: hidden;
-}
-
-.imagens-abaixo-h .imagens-deslizar img{
-    width: 100%;
-    height: 100%;
-}
-
-.navegacao-imagens{
+#login{
     position: absolute;
-    bottom: 200px;
-    left: 730px;
-    display: flex;
+    left: 900px;
 }
-
-.barra-nav{
-    width: 15px;
-    height: 15px;
-    border: 2px solid #000000;
-    margin: 6px;
-    border-radius: 100%;
-    cursor: pointer;
-    transition: background .3s;
-}
-
-.barra-nav:hover{
-    background-color: rgb(56, 93, 64);
-}
-
-
-.input-radio{
-    display: none;
-}
-
-.imagens-deslizar{
-    display: flex;
-    width: 300%;
-}
-
-.img-evento{
-    width: 33.33%;
-    transition: .6s;
-}
-*/
-/* CLASSE 'IMAGENS-DESLIZAR' QUE CONTÊM A DIV DAS IMAGENS */
-/*.Imagens-deslizar{
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden; /* Esconder as imagens  
-}
-
-.Imagens-deslizar img{
-    position: absolute; /* Deixa as imagens lado a lado 
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    animation: fade 3s infinite;
-}
-
-.slideshow a{
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-}
-
-@keyframes fade {
-    0%{
-        opacity: 0;
-    }
-    20%{
-        opacity: 1;
-    }
-    33%{
-        opacity: 1;
-    }
-    53%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-*/
-
-
-/* |=======| CORPO 02 |=======| */
 
 /* |=======| FOOTER |=======| */
-
-/*
 footer{
-    background-color: rgb(56, 93, 64);
-    margin-bottom: 0%;
-}*/
+    text-align: center;
+    font-size: small;
+    background: linear-gradient(#FEFCF6, #CADBB7 90%);
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* LOGO DO FOOTER */
+#logo-footer{
+    width: 7vw;
+}

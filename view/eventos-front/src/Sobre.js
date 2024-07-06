@@ -1,9 +1,13 @@
+import Logo from './logo.png'
+
 function Sobre(){
     return(
         <div>
             <header>
+
+                <img id="logo" src={Logo} alt="Logo Tickly"/>
                 <nav id="menu-h">
-                    <ul>
+                    <ul>      
                         <li><a href="/">Home</a></li>
                         <li><a href="/sobre">Sobre</a></li>
                         <li>
@@ -15,7 +19,7 @@ function Sobre(){
                                 <li><a href="/">Excluir Reserva</a></li>
                             </ul>
                         </li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a id='login' href="/login">Login</a></li>
                     </ul>    
                 </nav>
             </header>
@@ -37,7 +41,10 @@ function Sobre(){
                 </section>
             </main>
 
-            <footer></footer>
+            <footer>
+                <img id="logo-footer" src={Logo} alt="Logo Tickly"/>
+                <p class="copyright">&copy; Tickly - 2024</p>
+            </footer>
         </div>
     );
 }
