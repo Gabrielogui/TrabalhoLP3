@@ -20,27 +20,39 @@
 .cards{
     position: relative; 
     width: 300px;
-    height: 250px;
+    height: 300px;
     overflow: hidden;
     border-radius: 20px;
 }
 
+
 /* ======= LEGENDA DOS CARDS =======  */
-.cards span{
+.data{
+    padding: 16px;
+    position: absolute;
+    color: #83E509;
+    font-size: 18px;
+    top: 125px;
+}
+
+.nome{
     padding: 16px;
     position: absolute;
     color: black;
     font-size: 24px;
     font-weight: 700;
-    top: 125px;
+    top: 155px;
 }
 
-/* .carrinho{
+.local{
+    padding: 16px;
     position: absolute;
-    top: 10px;
-    left: 100px;
     color: black;
-} */
+    font-size: 18px;
+    top: 190px;
+}
+
+
 /* |=======| COR DOS CARDS |=======| */
 .card1 {
     background-color: #FEFCF6;
@@ -119,6 +131,16 @@
 /* |=======| AO PASSAR O CURSOR NOS CARDS |=======| */
 .offer__list-item :hover{
     transform: scale(1.02);
-    border: 1px solid grey;
+    border: 1px solid rgb(192, 191, 191);
     border-radius: 20px;
+}
+
+.offer__list-item span:hover{
+    transform: none;
+    border: none;
+}
+
+.offer__list-item span i:hover{
+    transform: none;
+    border: none;
 }

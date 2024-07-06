@@ -93,6 +93,13 @@ body{
     padding: 10px 15px;
 }
 
+#cart{
+    position: absolute;
+    left: 1050px;
+    top: 5px;
+    color: #83E509;
+}
+
 #login{
     position: absolute;
     left: 1100px;

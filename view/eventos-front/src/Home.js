@@ -28,11 +28,12 @@ function Home({ logado }){
                                     <li><a href="/">Excluir Reserva</a></li>
                                 </ul>
                             </li>
+                            
                             {/*<li>oi, {nome}</li>*/}
                             { logado ? (
                             <li>Usuario Logado!</li>
                             ) : (
-                            <li><a id="login" href="/login">Login</a></li>
+                            <li><span><i id='cart' class="fa-solid fa-cart-shopping"></i></span><a id="login" href="/login">Login</a></li>
                             )
                             }
                         </ul>
@@ -45,53 +46,65 @@ function Home({ logado }){
                         
                         <a href="/" >
                             <div class="cards card1">
-                                <span>Tickly</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card2">
-                                <span><i class="carrinho" style="color: black;"></i></span>
-                                {/* <span>DATA</span>
-                                <span>NOME</span>
-                                <span>LOCAL</span> */}
-                        
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card3">
-                                <span>Lançamentos</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card4">
-                                <span>Creators</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card5">
-                                <span>Para treinar</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card6">
-                                <span>Podcasts</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card7">
-                                <span>Sertanejo</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
                         <a href="/" >
                             <div class="cards card8">
-                                <span>Samba e pagode</span>
+                                <span class='data'>DATA</span>
+                                <span class='nome'>NOME</span>
+                                <span class='local'>LOCAL</span>
                             </div>
                         </a>
 
