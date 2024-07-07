@@ -51,7 +51,7 @@ function Home({ logado, listaEvento, usuario, logout }){
                     <section class="offer__list-item">
                         { listaEvento.map((evento, id) => (
                         <a href="/" >
-                            <div class="cards" style={{ backgroundImage: `url(${evento.url})` }}>
+                            <div class="cards" style={{ backgroundImage: `url(${evento.imagem})` }}>
                                 <span class='data'>{evento.data}</span>
                                 <span class='nome'>{evento.nome}</span>
                                 <span class='local'>{evento.descricao}</span>

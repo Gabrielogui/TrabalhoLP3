@@ -28,8 +28,9 @@ function App() {
     id: 0,
     nome : '',
     valor : 0.0,
-    descriecao : '',
-    url : ''
+    data : '',
+    descricao : '',
+    imagem : ''
   }
 
   // |=======| NAVEGATE |========|
@@ -158,7 +159,9 @@ function App() {
       if(retorno_convertido.mensagem !== undefined){
         alert(retorno_convertido.mensagem);
       }else{
-        setEvento(...evento, retorno_convertido);
+        console.log(retorno_convertido);
+        setEvento([...eventos, retorno_convertido]);
+        alert("Cadastrado com sucesso!");
       }
     })
   }

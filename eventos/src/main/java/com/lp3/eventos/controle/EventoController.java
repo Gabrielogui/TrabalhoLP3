@@ -30,8 +30,8 @@ public class EventoController {
 
     // |=======| CADASTRAR EVENTOS |=======|
     @PostMapping("/cadastrarEvento")
-    public ResponseEntity<?> cadastrar(@RequestBody Evento evento){
-        return eventoServico.cadastrar(evento);
+    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento){
+        return eventoServico.cadastrarEvento(evento);
     }
 
     // |=======| EDITAR EVENTOS |=======|

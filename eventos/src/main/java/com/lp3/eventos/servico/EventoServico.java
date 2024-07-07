@@ -21,11 +21,12 @@ public class EventoServico {
     private RespostaModelo respostaModelo;
 
     // |=======| CADASTRAR EVENTOS |=======|
-    public ResponseEntity<?> cadastrar(@RequestBody Evento evento){
-        if(evento.getNome().equals("") || evento.getDescricao().equals("") || evento.getValor() == 0){
-            respostaModelo.setMensagem("Preencha todos os campos");
+    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento){
+       if(evento.getNome().equals(" ") || evento.getDescricao().equals(" ")){
+           respostaModelo.setMensagem("Preencha todos os campos");
             return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
         }else{
+            System.out.println("dadadadada");
             return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.CREATED);
         }
     }
