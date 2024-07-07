@@ -32,8 +32,4 @@ public class Usuario {
 
     @Column(name = "senha", nullable = false)
     private String senha;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Set<Evento> eventos;
-
 }
