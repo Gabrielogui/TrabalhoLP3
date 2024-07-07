@@ -32,7 +32,7 @@ public class IngressoController {
 
     // |=======| COMPRAR INGRESSO |=======|
     @PostMapping("/compraIngresso")
-    public ResponseEntity<?> ComprarIngresso(@RequestBody Map<String, Long> ingresso){
+    public ResponseEntity<?> ComprarIngresso(@RequestBody Ingresso ingresso){
         return ingressoServico.comprarIngresso(ingresso);
     }
 

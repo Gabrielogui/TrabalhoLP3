@@ -5,101 +5,106 @@
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-bottom: 16px;
-    gap: 2px;
-    grid-gap: 32px;
+    margin-bottom: 0.833vw;
+    gap: 0.104vw;
+    grid-gap: 1.667vw;
     /* grid-column-gap: 0px; */
-    margin: 10px auto;
+    margin: 0.521vw auto;
 }
 
 .offer__list{
-    margin-right: 300px;
-    margin-left: 300px;
+    margin-right: 15.625vw;
+    margin-left: 15.625vw;
 }
 /* ======= CARDS ======= */
 .cards{
     position: relative; 
-    width: 300px;
-    height: 300px;
+    width: 15.625vw;
+    height: 15.625vw;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 1.042vw;
+
+    background-color: #FEFCF6;
+    background-image: url('./img/supernova.png');
+    background-size: 15.625vw 6.51vw;
+    background-repeat: no-repeat;
 }
 
 
 /* ======= LEGENDA DOS CARDS =======  */
 .data{
-    padding: 16px;
+    padding: 0.833vw;
     position: absolute;
     color: #83E509;
-    font-size: 18px;
-    top: 125px;
+    font-size: 0.938vw;
+    top: 6.51vw;
 }
 
 .nome{
-    padding: 16px;
+    padding: 0.833vw;
     position: absolute;
     color: black;
-    font-size: 24px;
+    font-size: 1.25vw;
     font-weight: 700;
-    top: 155px;
+    top: 8.073vw;
 }
 
 .local{
-    padding: 16px;
+    padding: 0.833vw;
     position: absolute;
     color: black;
-    font-size: 18px;
-    top: 190px;
+    font-size: 0.938vw;
+    top: 9.896vw;
 }
 
 
 /* |=======| COR DOS CARDS |=======| */
 .card1 {
     background-color: #FEFCF6;
-    background-image: url('supernova.png');
-    background-size: 300px 125px;
+    background-image: url('./img/supernova.png');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card2 {
     background-color: #FEFCF6;
-    background-image: url('numanice.png');
-    background-size: 300px 125px;
+    background-image: url('./img/numanice.png');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card3 {
     background-color: #FEFCF6;
-    background-image: url('dennis.png');
-    background-size: 300px 125px;
+    background-image: url('./img/dennis.png');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card4 {
     background-color: #FEFCF6;
-    background-image: url('baco.webp');
-    background-size: 300px 125px;
+    background-image: url('./img/baco.webp');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card5 {
     background-color: #FEFCF6;
-    background-image: url('pagogin.png');
-    background-size: 300px 125px;
+    background-image: url('./img/pagogin.png');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card6 {
     background-color: #FEFCF6;
-    background-image: url('arraia.png');
-    background-size: 300px 125px;
+    background-image: url('./img/arraia.png');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card7 {
     background-color: #FEFCF6;
-    background-image: url('bk.jpeg');
-    background-size: 300px 125px;
+    background-image: url('./img/bk.jpeg');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 .card8 {
     background-color: #FEFCF6;
-    background-image: url('patata.jpeg');
-    background-size: 300px 125px;
+    background-image: url('./img/patata.jpeg');
+    background-size: 15.625vw 6.51vw;
     background-repeat: no-repeat;
 }
 /* .card9 {
@@ -131,8 +136,8 @@
 /* |=======| AO PASSAR O CURSOR NOS CARDS |=======| */
 .offer__list-item :hover{
     transform: scale(1.02);
-    border: 1px solid rgb(192, 191, 191);
-    border-radius: 20px;
+    border: 0.052vw solid rgb(192, 191, 191);
+    border-radius: 1.042vw;
 }
 
 .offer__list-item span:hover{

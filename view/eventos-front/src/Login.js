@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login({ eventoTeclado, cadastrarUsuario, login }) {
+
+    const navigate = useNavigate();
 
     const [logando, setLogando] = useState(true);
     const [email, setEmail] = useState('');
@@ -13,7 +16,7 @@ function Login({ eventoTeclado, cadastrarUsuario, login }) {
     }
 
     const logarClick = () => {
-        login(email, senha);
+        login(email, senha, navigate);
     }
 
     return(

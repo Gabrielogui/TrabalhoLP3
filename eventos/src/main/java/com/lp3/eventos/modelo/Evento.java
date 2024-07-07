@@ -32,5 +32,6 @@ public class Evento {
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
-    
+    @Column(name = "imagem", nullable = true)
+    private String url;
 }

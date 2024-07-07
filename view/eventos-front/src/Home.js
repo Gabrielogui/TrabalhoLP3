@@ -1,13 +1,18 @@
 //import { useLocation } from "react-router-dom";
 import './luiza.css';
-import './logo192.png';
-import Logo from './logo.png';
+//import './logo192.png';
+import Logo from './img/logo.png';
 import './reset.css';
+import { useNavigate } from 'react-router-dom';
 
-function Home({ logado }){
+function Home({ logado, listaEvento, usuario, logout }){
 
-    /*const location = useLocation();
-    const nome = location.state?.nome || 'Usuário';*/
+    const navigate = useNavigate();
+    /*const nome = location.state?.nome || 'Usuário';*/
+
+    const logout_ = () => {
+        logout(navigate)
+    }
 
     return(
         <div>
@@ -19,23 +24,24 @@ function Home({ logado }){
                         <ul>
                             <li><a href="/">Home</a></li>
                             <li><a href="/sobre">Sobre</a></li>
+                            {/* COLOCAR NOME DO USUÁRIO */}
+                            { logado ? (
                             <li>
-                                <a href="/">Reservar</a>
+                                <a href="/">oi, {usuario.nome}</a>
                                 <ul>
-                                    <li><a href="/">Fazer Reserva</a></li>
-                                    <li><a href="/">Consultar Reserva</a></li>
-                                    <li><a href="/">Editar Reserva</a></li>
-                                    <li><a href="/">Excluir Reserva</a></li>
+                                    <li><a href="/criarEvento">Criar Evento</a></li>
+                                    <li><a href="/">Meus Eventos</a></li>
+                                    <li><a href="/">Meus Ingressos</a></li>
+                                    <li onClick={logout_}><button>Sair</button></li>
                                 </ul>
                             </li>
                             
-                            {/*<li>oi, {nome}</li>*/}
-                            { logado ? (
-                            <li>Usuario Logado!</li>
                             ) : (
-                            <li><span><i id='cart' class="fa-solid fa-cart-shopping"></i></span><a id="login" href="/login">Login</a></li>
+                            
+                            <li><a id="login" href="/login">Login</a></li>
                             )
                             }
+                            <li><span><i id='cart' class="fa-solid fa-cart-shopping"></i></span></li>
                         </ul>
                     </nav>
                 </div>
@@ -43,16 +49,19 @@ function Home({ logado }){
             <main>
                 <div class="offer__list">
                     <section class="offer__list-item">
-                        
+                        { listaEvento.map((evento, id) => (
                         <a href="/" >
-                            <div class="cards card1">
-                                <span class='data'>DATA</span>
-                                <span class='nome'>NOME</span>
-                                <span class='local'>LOCAL</span>
+                            <div class="cards" style={{ backgroundImage: `url(${evento.url})` }}>
+                                <span class='data'>{evento.data}</span>
+                                <span class='nome'>{evento.nome}</span>
+                                <span class='local'>{evento.descricao}</span>
                             </div>
                         </a>
-
-                        <a href="/" >
+                        )
+                        )
+                        }
+                        {
+                        /*<a href="/" >
                             <div class="cards card2">
                                 <span class='data'>DATA</span>
                                 <span class='nome'>NOME</span>
@@ -100,13 +109,14 @@ function Home({ logado }){
                             </div>
                         </a>
 
-                        <a href="/" >
+                        {<a href="/" >
                             <div class="cards card8">
                                 <span class='data'>DATA</span>
                                 <span class='nome'>NOME</span>
                                 <span class='local'>LOCAL</span>
                             </div>
-                        </a>
+                        </a>}
+                        */}
 
                         {/* <a href="/" >
                             <div class="cards card9">

@@ -116,7 +116,7 @@ public class UsuarioServico {
 
         if (usuario.isPresent() && usuario.get().getSenha().equals(loginRequisicao.getSenha())) {
             // retornar ususario ao invés do nome
-            return ResponseEntity.ok(new LoginResposta(usuario.get().getNome()));
+            return ResponseEntity.ok(usuario.get());
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email ou senha estão incorretos");
         }

@@ -22,7 +22,7 @@ public class EventoServico {
 
     // |=======| CADASTRAR EVENTOS |=======|
     public ResponseEntity<?> cadastrar(@RequestBody Evento evento){
-        if(evento.getNome().equals("") || evento.getDescricao().equals("") || evento.getData().equals("")){
+        if(evento.getNome().equals("") || evento.getDescricao().equals("") || evento.getValor() == 0){
             respostaModelo.setMensagem("Preencha todos os campos");
             return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
         }else{

@@ -27,7 +27,7 @@ public class Ingresso {
     @JoinColumn(name = "evento_id", nullable = false)
     private Evento evento;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 }
