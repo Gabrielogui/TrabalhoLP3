@@ -7,6 +7,7 @@ package com.lp3.eventos.modelo;
 //import jakarta.persistence.Id;
 //import jakarta.persistence.Table;
 import jakarta.persistence.*;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,5 +32,8 @@ public class Usuario {
 
     @Column(name = "senha", nullable = false)
     private String senha;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Set<Evento> eventos;
 
 }

@@ -1,6 +1,7 @@
 package com.lp3.eventos.controle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lp3.eventos.modelo.Evento;
-//import com.lp3.eventos.repositiorio.EventoRepositorio;
+import com.lp3.eventos.repositiorio.EventoRepositorio;
 import com.lp3.eventos.servico.EventoServico;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -30,9 +33,29 @@ public class EventoController {
 
     // |=======| CADASTRAR EVENTOS |=======|
     @PostMapping("/cadastrarEvento")
-    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento){
-        return eventoServico.cadastrarEvento(evento);
-    }
+    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento) {
+        try {
+            eventoServico.cadastrarEvento(evento);
+            return ResponseEntity.ok(evento);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+        }
+    } 
+    
+   /*  @PostMapping("/cadastrarEvento")
+    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento) {
+        // Verifique se o evento já existe antes de salvar
+        Optional<Evento> eventoExistente = EventoRepositorio.findByNomeAndData(evento.getNome(), evento.getData());
+        if (eventoExistente.isPresent()) {
+            return ResponseEntity.badRequest().body("Evento já cadastrado.");
+        }
+
+        // Salvando o evento
+        Evento novoEvento = ResponseEntity.save(evento);
+        return ResponseEntity.ok(novoEvento);
+    } */
+
+
 
     // |=======| EDITAR EVENTOS |=======|
     @PutMapping("/editarEvento")

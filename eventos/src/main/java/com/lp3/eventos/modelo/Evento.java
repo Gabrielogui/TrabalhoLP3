@@ -34,4 +34,8 @@ public class Evento {
 
     @Column(name = "imagem", nullable = true)
     private String imagem;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 }
