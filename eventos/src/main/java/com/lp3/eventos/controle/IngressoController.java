@@ -17,6 +17,7 @@ import com.lp3.eventos.modelo.Ingresso;
 import com.lp3.eventos.modelo.Usuario;
 //import com.lp3.eventos.repositiorio.IngressoRepositorio;
 import com.lp3.eventos.servico.IngressoServico;
+import java.util.List;
 
 @RestController
 @RequestMapping("/")
@@ -46,6 +47,11 @@ public class IngressoController {
     @DeleteMapping("/reembolsarIngresso/{id}")
     public ResponseEntity<?> reembolsarIngresso(@PathVariable Long id){
         return null;
+    }
+
+    @GetMapping("/usuario/{usuarioId}")
+    public List<Ingresso> getIngressosByUsuarioId(@PathVariable Long usuarioId) {
+        return ingressoServico.findByUsuarioId(usuarioId);
     }
 }   
 

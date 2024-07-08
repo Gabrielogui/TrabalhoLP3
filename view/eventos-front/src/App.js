@@ -6,6 +6,8 @@ import Sobre from './Sobre';
 import Login from './Login';
 import CriarEvento from './CriarEvento';
 import { useEffect, useState } from 'react';
+import MeusEventos from './MeusEventos';
+import MeusIngressos from './MeusIngressos';
 
 function App() {
   const usuario = {
@@ -150,7 +152,6 @@ function App() {
     });
   };
   
-  
 
   const logout = (navigate) => {
     console.log('oi');
@@ -169,6 +170,8 @@ function App() {
           <Route path='/sobre' element={<Sobre logado={logado} usuario={objUsuario} logout={logout} />} />
           <Route path='/login' element={<Login eventoTeclado={aoDigitarUsuario} cadastrarUsuario={cadastrarUsuario} login={logar} />} />
           <Route path='/criarEvento' element={<CriarEvento eventoTeclado={aoDigitarEvento} cadastrarEvento={cadastrarEvento} />} />
+          <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} />} />
+          <Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />
         </Routes>
       </Router>
     </div>

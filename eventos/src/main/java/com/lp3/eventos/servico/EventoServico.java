@@ -10,49 +10,51 @@ import com.lp3.eventos.modelo.Evento;
 import com.lp3.eventos.modelo.RespostaModelo;
 import com.lp3.eventos.repositiorio.EventoRepositorio;
 
-@Service // Para que o spring entenda que é camada de servico
+import java.util.Optional;
+
+@Service
 public class EventoServico {
-    
-    // |=======| AUTOWIRED / ATRIBUTOS |=======|
+
     @Autowired
     private EventoRepositorio eventoRepositorio;
 
     @Autowired
     private RespostaModelo respostaModelo;
 
-    // |=======| CADASTRAR EVENTOS |=======|
-    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento){
-       if(evento.getNome().equals(" ") || evento.getDescricao().equals(" ")){
-           respostaModelo.setMensagem("Preencha todos os campos");
+    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento) {
+        if(evento.getNome().isEmpty() || evento.getDescricao().isEmpty()) {
+            respostaModelo.setMensagem("Preencha todos os campos");
             return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
-        }else{
-            System.out.println("dadadadada");
+        } else {
             return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.CREATED);
         }
     }
 
-    // |=======| EDITAR EVENTOS |=======|
-    public ResponseEntity<?> editar(@RequestBody Evento evento){
-        return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.OK);
-    }
-
-    // |=======| REMOVER EVENTOS |=======|
-    public ResponseEntity<?> deletar(Long id){
+    public ResponseEntity<?> deletarEvento(Long id) {
         eventoRepositorio.deleteById(id);
-
-        respostaModelo.setMensagem("Deletado com sucesso nessa porra!");
-        return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+        respostaModelo.setMensagem("Deletado com sucesso!");
+        return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.OK);
     }
 
-    // |=======| CONSULTAR EVENTOS |=======|
-    // SÓ SE TIVER BUSCA
-
-    // |=======| LISTAR EVENTOS |=======|
-    public Iterable<Evento> listar(){
+    public Iterable<Evento> listar() {
         return eventoRepositorio.findAll();
     }
 
-    
-
-
+    public Evento atualizarEvento(Long id, Evento eventoAtualizado) {
+        Optional<Evento> eventoExistente = eventoRepositorio.findById(id);
+        if (eventoExistente.isPresent()) {
+            Evento evento = eventoExistente.get();
+            evento.setNome(eventoAtualizado.getNome());
+            evento.setValor(eventoAtualizado.getValor());
+            evento.setData(eventoAtualizado.getData());
+            evento.setDescricao(eventoAtualizado.getDescricao());
+            evento.setImagem(eventoAtualizado.getImagem());
+            return eventoRepositorio.save(evento);
+        }
+        throw new RuntimeException("Evento não encontrado");
+    }
 }
+
+
+
+

@@ -58,16 +58,28 @@ public class EventoController {
 
 
     // |=======| EDITAR EVENTOS |=======|
-    @PutMapping("/editarEvento")
+    /* @PutMapping("/editarEvento")
     public ResponseEntity<?> editar(@RequestBody Evento evento){
         return eventoServico.editar(evento);
+    } */
+
+    @PutMapping("editarEvento/{id}")
+    public ResponseEntity<Evento> atualizarEvento(@PathVariable Long id, @RequestBody Evento evento) {
+        return ResponseEntity.ok(eventoServico.atualizarEvento(id, evento));
     }
+
+    @DeleteMapping("deletarEvento/{id}")
+    public ResponseEntity<Void> deletarEvento(@PathVariable Long id) {
+        eventoServico.deletarEvento(id);
+        return ResponseEntity.noContent().build();
+    }
+
     
     // |=======| DELETAR EVENTOS |=======|
-    @DeleteMapping("/deletarEvento/{id}")
+    /*@DeleteMapping("/deletarEvento/{id}")
     public ResponseEntity<?> deletar(@PathVariable Long id){
-        return eventoServico.deletar(id);
-    }
+        return eventoServico.deletarEvento(id);
+    } */
     
     // |=======| CONSULTAR EVENTOS |=======|
     @GetMapping("/consultarEvento")

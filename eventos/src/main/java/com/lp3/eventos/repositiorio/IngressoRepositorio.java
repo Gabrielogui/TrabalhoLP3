@@ -13,4 +13,5 @@ import java.util.List;
 public interface IngressoRepositorio extends JpaRepository<Ingresso, Long>{
 
     List<Ingresso> findByUsuario(Usuario usuario);
+    List<Ingresso> findByUsuarioId(Long usuarioId);
 }

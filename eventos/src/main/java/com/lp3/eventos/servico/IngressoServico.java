@@ -1,6 +1,7 @@
 package com.lp3.eventos.servico;
 
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,5 +52,9 @@ public class IngressoServico {
 
         respostaModelo.setMensagem("Seu ingresso foi reembolsado com sucesso!");
         return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+    }
+
+    public List<Ingresso> findByUsuarioId(Long usuarioId) {
+        return ingressoRepositorio.findByUsuarioId(usuarioId);
     }
 }
