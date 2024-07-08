@@ -2,6 +2,7 @@ package com.lp3.eventos.servico;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +41,10 @@ public class EventoServico {
         return eventoRepositorio.findAll();
     }
 
+    public ResponseEntity<?> atualizarEvento(@RequestBody Evento evento){
+        return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.OK);
+    }
+/* 
     public Evento atualizarEvento(Long id, Evento eventoAtualizado) {
         Optional<Evento> eventoExistente = eventoRepositorio.findById(id);
         if (eventoExistente.isPresent()) {
@@ -52,7 +57,7 @@ public class EventoServico {
             return eventoRepositorio.save(evento);
         }
         throw new RuntimeException("Evento não encontrado");
-    }
+    }*/
 }
 
 

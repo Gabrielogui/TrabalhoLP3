@@ -9,7 +9,12 @@ import { useEffect, useState } from 'react';
 import MeusEventos from './MeusEventos';
 import MeusIngressos from './MeusIngressos';
 
+// |=======| FUNÇÃO DA APLICAÇÃO |=======|
 function App() {
+
+  // |=======| OBJETOS |=======|
+
+  // |======= OBJETO USUARIO =======|
   const usuario = {
     id: 0,
     nome: '',
@@ -18,6 +23,9 @@ function App() {
     senha: ''
   };
 
+
+
+  // |=======| USESTATE |=======|
   const [logado, setLogado] = useState(() => {
     return localStorage.getItem('logado') === 'true';
   });
@@ -27,52 +35,64 @@ function App() {
     return savedUser ? JSON.parse(savedUser) : usuario;
   });
 
-  const evento = {
-    id: 0,
-    nome: '',
-    valor: 0.0,
-    data: '',
-    descricao: '',
-    imagem: '',
-    usuarioId: objUsuario.id
-  };
+  
+    // |======= OBJETO EVENTO =======|
+    const evento = {
+      id: 0,
+      nome: '',
+      valor: 0.0,
+      data: '',
+      descricao: '',
+      imagem: '',
+      usuarioId: objUsuario.id
+    };
 
   const [usuarios, setUsuarios] = useState([]);
   const [eventos, setEvento] = useState([]);
   const [objEvento, setObjEvento] = useState(evento);
+  
 
+  // |=======| USEEFFECT |=======|
+
+  // ======= LISTAR EVENTO DO BACK =======
   useEffect(() => {
     fetch("http://localhost:8080/listarEventos")
       .then(retorno => retorno.json())
       .then(retorno_convertido => setEvento(retorno_convertido));
   }, []);
 
+    // ======= LISTAR USUARIOS DO BACK =======
   useEffect(() => {
     fetch("http://localhost:8080/listar")
       .then(retorno => retorno.json())
       .then(retorno_convertido => setUsuarios(retorno_convertido));
   }, []);
 
+  // ======= MANTÉM O USUARIO LOGADO COMO TRUE =======
   useEffect(() => {
     localStorage.setItem('logado', logado);
     console.log(logado);
   }, [logado]);
 
+  // ======= MANTÉM O OBJETO USUARIO LOGADO =======
   useEffect(() => {
     localStorage.setItem('usuario', JSON.stringify(objUsuario));
     console.log(objUsuario);
   }, [objUsuario]);
 
+  // |=======| AO DIGITAR USUARIO |=======|
   const aoDigitarUsuario = (e) => {
     setObjUsuario({ ...objUsuario, [e.target.name]: e.target.value });
     console.log(e.target.name, e.target.value, objUsuario.nome, objUsuario.cpf, objUsuario.email, objUsuario.senha);
   };
 
+  // |=======| AO DIGITAR EVENTO |=======|
   const aoDigitarEvento = (e) => {
     setObjEvento({ ...objEvento, [e.target.name]: e.target.value, usuarioId: objUsuario.id });
     console.log(e.target.name, e.target.value, objEvento.nome, objEvento.descricao, objEvento.valor, objEvento.url);
   };
 
+  // |=======| LOGAR USUÁRIO |=======|
   const logar = (email, senha, navigate) => {
     fetch("http://localhost:8080/login", {
       method: 'post',
@@ -98,6 +118,7 @@ function App() {
       });
   };
 
+  // |=======| CADASTRAR USUÁRIO |=======|
   const cadastrarUsuario = () => {
     fetch("http://localhost:8080/cadastrar", {
       method: 'post',
@@ -118,6 +139,7 @@ function App() {
       });
   };
 
+  // |=======| CADASTRAR EVENTO |=======|
   const cadastrarEvento = () => {
     // Construir o objeto de evento com apenas o ID do usuário
     const updatedEvento = {
@@ -152,7 +174,44 @@ function App() {
     });
   };
   
+  // |=======| EDITAR EVENTO |=======|
+  const editarEvento = () => {
+    //fetch("http://localhost:8080")
+  }
 
+  // |=======| EXCLUIR EVENTO |=======|
+  const excluirEvento = () => {
+    console.log('oioi', objEvento.id);
+    fetch("http://localhost:8080/deletarEvento/"+objEvento.id, {
+      method: 'delete',
+      headers: {
+        'content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(retorno => retorno.json())
+    .then(retorno_convertido => {
+
+      alert(retorno_convertido.mensagem);
+
+      let vetorTemp = [...eventos];
+      //id
+      let indice = vetorTemp.findIndex((p) => {
+        return p.id === objEvento.id;
+      });
+
+      // Remover produto do vetor temporário
+      vetorTemp.splice(indice, 1);
+      
+      // Atualizar o vetor de produtos
+      setEvento(vetorTemp);
+    }
+    );
+
+    
+  }
+
+  // |=======| LOGOUT |=======|
   const logout = (navigate) => {
     console.log('oi');
     localStorage.removeItem('usuario');
@@ -161,6 +220,14 @@ function App() {
     navigate('/login');
   };
 
+  // |=======| SELECIONAR EVENTO |=======|
+  const selecionarEvento = (id) => {
+    setEvento(eventos[id]);
+    //setSelecionado(false);
+  }
+
+
+  // |=======| RETORNO |=======|
   return (
     <div>
       <Router>
@@ -170,7 +237,7 @@ function App() {
           <Route path='/sobre' element={<Sobre logado={logado} usuario={objUsuario} logout={logout} />} />
           <Route path='/login' element={<Login eventoTeclado={aoDigitarUsuario} cadastrarUsuario={cadastrarUsuario} login={logar} />} />
           <Route path='/criarEvento' element={<CriarEvento eventoTeclado={aoDigitarEvento} cadastrarEvento={cadastrarEvento} />} />
-          <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} />} />
+          <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} excluirEvento={excluirEvento} selecionarEvento={selecionarEvento}/>} />
           <Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />
         </Routes>
       </Router>

@@ -1,5 +1,5 @@
 //import { useLocation } from "react-router-dom";
-import './luiza.css';
+import './Cards.css';
 //import './logo192.png';
 import Logo from './img/logo.png';
 import './reset.css';

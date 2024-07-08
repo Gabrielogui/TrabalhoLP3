@@ -4,11 +4,12 @@ import './meusEventos.css';
 import Logo from './img/logo.png';
 import { useNavigate } from 'react-router-dom';
 
-function MeusEventos({ logado, listaEvento, usuario, logout }) {
+function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, selecionarEvento }) {
     const [meusEventos, setMeusEventos] = useState([]);
     const [editandoEvento, setEditandoEvento] = useState(null);
     const navigate = useNavigate();
 
+    // 
     useEffect(() => {
         if (logado) {
             const eventosDoUsuario = listaEvento.filter(evento => evento.usuario.id === usuario.id);
@@ -23,7 +24,7 @@ function MeusEventos({ logado, listaEvento, usuario, logout }) {
     const handleEdit = (evento) => {
         setEditandoEvento(evento);
     };
-
+    /*
     const handleDelete = (id) => {
         axios.delete(`/deletarEvento/${id}`)
             .then(() => {
@@ -44,6 +45,15 @@ function MeusEventos({ logado, listaEvento, usuario, logout }) {
                 console.error("Erro ao atualizar evento", err);
             });
     };
+    */
+
+    const [selecionado, setSelecionado] = useState(false);
+
+    const selecionar = (id) => {
+        setSelecionado(true);
+        selecionarEvento(id);
+
+    }
 
     return (
         <div>
@@ -80,14 +90,22 @@ function MeusEventos({ logado, listaEvento, usuario, logout }) {
                             <span className="event-name">{evento.nome}</span>
                             <span className="event-description">{evento.descricao}</span>
                             <span className="event-valor">{evento.valor}</span>
-                            <button onClick={() => handleEdit(evento)}>Editar</button>
-                            <button onClick={() => handleDelete(evento.id)}>Excluir</button>
+                            
+                                
+                                
+                                
+                                    <button onClick={() => handleEdit(evento)}>Editar</button>
+                                    <button onClick={excluirEvento}>Excluir</button> 
+                                
+                            
+                                <button onClick={() => selecionar(evento.id)}>Selecionar</button>
+                            
                         </div>
                     ))}
                 </div>
-                {editandoEvento && (
+                {/*editandoEvento && (
                     <EditEventForm evento={editandoEvento} onSave={handleSave} onCancel={() => setEditandoEvento(null)} />
-                )}
+                )*/}
             </main>
             <footer>
                 <img id="logo-footer" src={Logo} alt="Logo Tickly" />
