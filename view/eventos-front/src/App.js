@@ -5,9 +5,8 @@ import Home from './Home';
 import Sobre from './Sobre';
 import Login from './Login';
 import CriarEvento from './CriarEvento';
-import { useEffect, useState } from 'react';
 import MeusEventos from './MeusEventos';
-import MeusIngressos from './MeusIngressos';
+import { useEffect, useState } from 'react';
 
 // |=======| FUNÇÃO DA APLICAÇÃO |=======|
 function App() {
@@ -238,7 +237,7 @@ function App() {
           <Route path='/login' element={<Login eventoTeclado={aoDigitarUsuario} cadastrarUsuario={cadastrarUsuario} login={logar} />} />
           <Route path='/criarEvento' element={<CriarEvento eventoTeclado={aoDigitarEvento} cadastrarEvento={cadastrarEvento} />} />
           <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} excluirEvento={excluirEvento} selecionarEvento={selecionarEvento}/>} />
-          <Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />
+          {/*<Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />*/}
         </Routes>
       </Router>
     </div>

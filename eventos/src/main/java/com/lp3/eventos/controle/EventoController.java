@@ -60,27 +60,15 @@ public class EventoController {
     // |=======| EDITAR EVENTOS |=======|
     @PutMapping("/editarEvento")
     public ResponseEntity<?> editar(@RequestBody Evento evento){
-        return eventoServico.atualizarEvento(evento);
-    } 
-    /* 
-    @PutMapping("editarEvento/{id}")
-    public ResponseEntity<Evento> atualizarEvento(@PathVariable Long id, @RequestBody Evento evento) {
-        return ResponseEntity.ok(eventoServico.atualizarEvento(id, evento));
+        return eventoServico.editar(evento);
     }
 
-    @DeleteMapping("deletarEvento/{id}")
-    public ResponseEntity<Void> deletarEvento(@PathVariable Long id) {
-        eventoServico.deletarEvento(id);
-        return ResponseEntity.noContent().build();
-    }*/
-
-    
     // |=======| DELETAR EVENTOS |=======|
     @DeleteMapping("/deletarEvento/{id}")
     public ResponseEntity<?> deletar(@PathVariable Long id){
-        return eventoServico.deletarEvento(id);
-    } 
-    
+        return eventoServico.deletar(id);
+    }
+
     // |=======| CONSULTAR EVENTOS |=======|
     @GetMapping("/consultarEvento")
     public Evento consultar(@RequestBody Evento evento){ // Só se houver busca

@@ -11,55 +11,45 @@ import com.lp3.eventos.modelo.Evento;
 import com.lp3.eventos.modelo.RespostaModelo;
 import com.lp3.eventos.repositiorio.EventoRepositorio;
 
-import java.util.Optional;
-
-@Service
+@Service // Para que o spring entenda que é camada de servico
 public class EventoServico {
-
+    
+    // |=======| AUTOWIRED / ATRIBUTOS |=======|
     @Autowired
     private EventoRepositorio eventoRepositorio;
 
     @Autowired
     private RespostaModelo respostaModelo;
 
-    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento) {
-        if(evento.getNome().isEmpty() || evento.getDescricao().isEmpty()) {
+    // |=======| CADASTRAR EVENTOS |=======|
+    public ResponseEntity<?> cadastrarEvento(@RequestBody Evento evento){
+       if(evento.getNome().equals(" ") || evento.getDescricao().equals(" ") || evento.getData().equals("") || evento.getUsuario().getId() == null){
             respostaModelo.setMensagem("Preencha todos os campos");
             return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
-        } else {
+        }else{
+            System.out.println("dadadadada");
             return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.CREATED);
         }
     }
 
-    public ResponseEntity<?> deletarEvento(Long id) {
-        eventoRepositorio.deleteById(id);
-        respostaModelo.setMensagem("Deletado com sucesso!");
-        return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.OK);
-    }
-
-    public Iterable<Evento> listar() {
-        return eventoRepositorio.findAll();
-    }
-
-    public ResponseEntity<?> atualizarEvento(@RequestBody Evento evento){
+    // |=======| EDITAR EVENTOS |=======|
+    public ResponseEntity<?> editar(@RequestBody Evento evento){
         return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.OK);
     }
-/* 
-    public Evento atualizarEvento(Long id, Evento eventoAtualizado) {
-        Optional<Evento> eventoExistente = eventoRepositorio.findById(id);
-        if (eventoExistente.isPresent()) {
-            Evento evento = eventoExistente.get();
-            evento.setNome(eventoAtualizado.getNome());
-            evento.setValor(eventoAtualizado.getValor());
-            evento.setData(eventoAtualizado.getData());
-            evento.setDescricao(eventoAtualizado.getDescricao());
-            evento.setImagem(eventoAtualizado.getImagem());
-            return eventoRepositorio.save(evento);
-        }
-        throw new RuntimeException("Evento não encontrado");
-    }*/
+
+    // |=======| REMOVER EVENTOS |=======|
+    public ResponseEntity<?> deletar(Long id){
+        eventoRepositorio.deleteById(id);
+
+        respostaModelo.setMensagem("Deletado com sucesso nessa porra!");
+        return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+    }
+
+    // |=======| CONSULTAR EVENTOS |=======|
+    // SÓ SE TIVER BUSCA
+
+    // |=======| LISTAR EVENTOS |=======|
+    public Iterable<Evento> listar(){
+        return eventoRepositorio.findAll();
+    }
 }
-
-
-
-

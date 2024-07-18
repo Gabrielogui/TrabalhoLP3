@@ -1,7 +1,6 @@
 package com.lp3.eventos.servico;
 
 import java.util.Map;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,15 +45,16 @@ public class IngressoServico {
         return ingressoRepositorio.findByUsuario(usuario);
     }
 
+    // |=======| LISTAR INGREESSOS |=======|
+    public Iterable<Ingresso> listarIngressos(){
+        return ingressoRepositorio.findAll();
+    }
+
     // |=======| REEMBOLSAR INGRESSOS |=======|
     public ResponseEntity<?> reembolsarIngresso(@PathVariable Long id){
         ingressoRepositorio.deleteById(id);
 
         respostaModelo.setMensagem("Seu ingresso foi reembolsado com sucesso!");
         return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
-    }
-
-    public List<Ingresso> findByUsuarioId(Long usuarioId) {
-        return ingressoRepositorio.findByUsuarioId(usuarioId);
     }
 }

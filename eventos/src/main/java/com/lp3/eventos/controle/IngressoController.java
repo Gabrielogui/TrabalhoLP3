@@ -17,7 +17,6 @@ import com.lp3.eventos.modelo.Ingresso;
 import com.lp3.eventos.modelo.Usuario;
 //import com.lp3.eventos.repositiorio.IngressoRepositorio;
 import com.lp3.eventos.servico.IngressoServico;
-import java.util.List;
 
 @RestController
 @RequestMapping("/")
@@ -37,21 +36,22 @@ public class IngressoController {
         return ingressoServico.comprarIngresso(ingresso);
     }
 
-    // |=======| VIZUALIZAR INGRESSOS |=======|
-    @GetMapping("/visualizarIngresso")
-    public Iterable<Ingresso> visualizarIngressos(@RequestBody Usuario usuario){
-        return ingressoServico.visualizarIngresso(usuario);
+    // |=======| VISUALIZAR INGRESSOS |=======|
+   // @GetMapping("/visualizarIngresso")
+    //public Iterable<Ingresso> visualizarIngressos(@RequestBody Usuario usuario){
+      //  return ingressoServico.visualizarIngresso(usuario);
+    //}
+
+    // |=======| LISTAR INGRESSOS |=======|
+    @GetMapping("/listarIngressos")
+    public Iterable<Ingresso> listarIngresso(){
+        return ingressoServico.listarIngressos();
     }
 
     // |=======| REEMBOLSAR INGRESSOS |=======|
     @DeleteMapping("/reembolsarIngresso/{id}")
     public ResponseEntity<?> reembolsarIngresso(@PathVariable Long id){
         return null;
-    }
-
-    @GetMapping("/usuario/{usuarioId}")
-    public List<Ingresso> getIngressosByUsuarioId(@PathVariable Long usuarioId) {
-        return ingressoServico.findByUsuarioId(usuarioId);
     }
 }   
 

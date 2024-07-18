@@ -1,5 +1,5 @@
 //import { useLocation } from "react-router-dom";
-import './Cards.css';
+import './luiza.css';
 //import './logo192.png';
 import Logo from './img/logo.png';
 import './reset.css';
@@ -30,8 +30,8 @@ function Home({ logado, listaEvento, usuario, logout }){
                                 <a href="/">oi, {usuario.nome}</a>
                                 <ul>
                                     <li><a href="/criarEvento">Criar Evento</a></li>
-                                    <li><a href="/meusEventos">Meus Eventos</a></li>
-                                    <li><a href="/meusIngressos">Meus Ingressos</a></li>
+                                    <li><a href="/">Meus Eventos</a></li>
+                                    <li><a href="/">Meus Ingressos</a></li>
                                     <li onClick={logout_}><button>Sair</button></li>
                                 </ul>
                             </li>

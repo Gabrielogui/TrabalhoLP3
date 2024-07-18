@@ -1,4 +1,4 @@
-//import './criarEvento.css';
+//import './CriarEvento.css';
 
 function CriarEvento({ eventoTeclado, cadastrarEvento }) {
 
