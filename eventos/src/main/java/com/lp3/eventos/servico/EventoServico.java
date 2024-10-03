@@ -41,7 +41,7 @@ public class EventoServico {
     public ResponseEntity<?> deletar(Long id){
         eventoRepositorio.deleteById(id);
 
-        respostaModelo.setMensagem("Deletado com sucesso nessa porra!");
+        respostaModelo.setMensagem("Deletado com sucesso!");
         return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
     }
 

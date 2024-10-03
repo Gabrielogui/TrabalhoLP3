@@ -175,7 +175,36 @@ function App() {
   
   // |=======| EDITAR EVENTO |=======|
   const editarEvento = () => {
-    //fetch("http://localhost:8080")
+    const updatedEvento = {
+      nome: objEvento.nome,
+      valor: objEvento.valor,
+      data: objEvento.data,
+      descricao: objEvento.descricao,
+      imagem: objEvento.imagem,
+      usuario: { id: objUsuario.id } // Inclui apenas o ID do usuário
+    };
+
+    fetch("http://localhost:8080/editarEvento", {
+      method: 'post',
+      body: JSON.stringify(updatedEvento),
+      headers: {
+        'content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.mensagem !== undefined) {
+        alert(data.mensagem);
+      } else {
+        console.log(data);
+        setEvento([...eventos, data]);
+        alert("Editado com sucesso!");
+      }
+    })
+    .catch(error => {
+      alert("Error: " + error.message);
+    });
   }
 
   // |=======| EXCLUIR EVENTO |=======|
@@ -236,7 +265,7 @@ function App() {
           <Route path='/sobre' element={<Sobre logado={logado} usuario={objUsuario} logout={logout} />} />
           <Route path='/login' element={<Login eventoTeclado={aoDigitarUsuario} cadastrarUsuario={cadastrarUsuario} login={logar} />} />
           <Route path='/criarEvento' element={<CriarEvento eventoTeclado={aoDigitarEvento} cadastrarEvento={cadastrarEvento} />} />
-          <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} excluirEvento={excluirEvento} selecionarEvento={selecionarEvento}/>} />
+          <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} excluirEvento={excluirEvento} selecionarEvento={selecionarEvento} eventoTeclado={aoDigitarEvento} editarEvento={editarEvento}/>} />
           {/*<Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />*/}
         </Routes>
       </Router>

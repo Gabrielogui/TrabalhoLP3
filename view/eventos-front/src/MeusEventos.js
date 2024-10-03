@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-//import './meusEventos.css';
+import classes from './meusEventos.module.css';
 import Logo from './img/logo.png';
 import { useNavigate } from 'react-router-dom';
 
-function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, selecionarEvento }) {
+function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, selecionarEvento, eventoTeclado, editarEvento }) {
     const [meusEventos, setMeusEventos] = useState([]);
     const [editandoEvento, setEditandoEvento] = useState(null);
+    const [eventoEditado, setEventoEditado] = useState({}); // Estado para armazenar alterações
     const navigate = useNavigate();
 
     // 
@@ -23,18 +24,32 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
 
     const handleEdit = (evento) => {
         setEditandoEvento(evento);
+        setEventoEditado(evento); // Preenche o formulário com os dados atuais do evento
     };
+
+    // |=======| OBJETO EVENTO EDITADO |=======|
+    /*const eventoEditado = {
+        id: 0,
+        nome: '',
+        valor: 0.0,
+        data: '',
+        descricao: '',
+        imagem: '',
+        usuarioId: 0
+    }
+*/
     /*
     const handleDelete = (id) => {
         axios.delete(`/deletarEvento/${id}`)
             .then(() => {
                 setMeusEventos(meusEventos.filter(evento => evento.id !== id));
+                setEditandoEvento(null);
             })
             .catch(err => {
                 console.error("Erro ao deletar evento", err);
             });
     };
-
+*/
     const handleSave = (eventoAtualizado) => {
         axios.put(`/editarEvento/${eventoAtualizado.id}`, eventoAtualizado)
             .then(response => {
@@ -45,7 +60,11 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
                 console.error("Erro ao atualizar evento", err);
             });
     };
-    */
+    
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setEventoEditado({ ...eventoEditado, [name]: value }); // Atualiza os valores do formulário
+    };
 
     const [selecionado, setSelecionado] = useState(false);
 
@@ -83,26 +102,51 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
                 </div>
             </header>
             <main>
-                <div className="event-list">
+                <div className={classes.event_list}>
                     {meusEventos.map(evento => (
-                        <div className="event-card" key={evento.id} style={{ backgroundImage: `url(${evento.imagem})` }}>
-                            <span className="event-date">{evento.data}</span>
-                            <span className="event-name">{evento.nome}</span>
-                            <span className="event-description">{evento.descricao}</span>
-                            <span className="event-valor">{evento.valor}</span>
+                        <div className={classes.event_card} key={evento.id} style={{ backgroundImage: `url(${evento.imagem})` }}>
+                            <span className={classes.event_date}>{evento.data}</span>
+                            <span className={classes.event_name}>{evento.nome}</span>
+                            <span className={classes.event_description}>{evento.descricao}</span>
+                            <span className={classes.event_valor}>{evento.valor}</span>
                             
                                 
                                 
                                 
-                                    <button onClick={() => handleEdit(evento)}>Editar</button>
-                                    <button onClick={excluirEvento}>Excluir</button> 
+                                    <button className={classes.botao} onClick={() => handleEdit(evento)}>Editar</button>
+                                    <button className={classes.botao} onClick={excluirEvento}>Excluir</button> 
                                 
                             
-                                <button onClick={() => selecionar(evento.id)}>Selecionar</button>
+                               {/* <button className={classes.botao} onClick={() => selecionar(evento.id)}>Selecionar</button> */}
                             
                         </div>
                     ))}
                 </div>
+                {editandoEvento && (
+                    <div className={classes.edit_form}>
+                        <form onSubmit={(e) => { e.preventDefault(); handleSave(); }}>
+                            <label>
+                                Nome:
+                                <input type="text" name="nome" value={eventoEditado.nome} onChange={eventoTeclado} />
+                            </label>
+                            <label>
+                                Local:
+                                <input type='text' name="Local" value={eventoEditado.descricao} onChange={eventoTeclado} />
+                            </label>
+                            <label>
+                                Valor:
+                                <input
+                                    type="number" name="valor" value={eventoEditado.valor} onChange={eventoTeclado} />
+                            </label>
+                            <label>
+                                Data:
+                                <input type="date" name="data" value={eventoEditado.data} onChange={eventoTeclado} />
+                            </label>
+                            <button onClick={editarEvento}>Salvar</button>
+                            <button onClick={() => setEditandoEvento(null)}>Cancelar</button>
+                        </form>
+                    </div>
+                )}
                 {/*editandoEvento && (
                     <EditEventForm evento={editandoEvento} onSave={handleSave} onCancel={() => setEditandoEvento(null)} />
                 )*/}
@@ -129,7 +173,7 @@ function EditEventForm({ evento, onSave, onCancel }) {
     };
 
     return (
-        <div className="edit-event-form">
+        <div className={classes.edit_event_form}>
             <form onSubmit={handleSubmit}>
                 <label>
                     Nome:
