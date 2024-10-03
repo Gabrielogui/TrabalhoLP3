@@ -2,7 +2,7 @@
 import './luiza.css';
 //import './logo192.png';
 import Logo from './img/logo.png';
-import './reset.css';
+//import './reset.css';
 import { useNavigate } from 'react-router-dom';
 
 function Home({ logado, listaEvento, usuario, logout }){
@@ -30,7 +30,7 @@ function Home({ logado, listaEvento, usuario, logout }){
                                 <a href="/">oi, {usuario.nome}</a>
                                 <ul>
                                     <li><a href="/criarEvento">Criar Evento</a></li>
-                                    <li><a href="/">Meus Eventos</a></li>
+                                    <li><a href="/meusEventos">Meus Eventos</a></li>
                                     <li><a href="/">Meus Ingressos</a></li>
                                     <li onClick={logout_}><button>Sair</button></li>
                                 </ul>

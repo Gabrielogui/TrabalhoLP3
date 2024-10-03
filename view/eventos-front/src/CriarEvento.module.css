@@ -1,6 +1,6 @@
 /* style.css */
 
-body {
+.corpo {
   font-family: 'Arial', sans-serif;
   background-color: #e0f2e9;
   display: flex;
@@ -17,7 +17,7 @@ body {
   width: 100%;
 }
 
-.form-container {
+.form_container {
   background-color: #ffffff;
   padding: 20px 40px;
   border-radius: 10px;
@@ -27,12 +27,12 @@ body {
   max-width: 400px;
 }
 
-h1 {
+.titulo {
   color: #2e7d32;
   margin-bottom: 20px;
 }
 
-input {
+.entrada {
   width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 10px;
@@ -43,11 +43,13 @@ input {
   transition: border-color 0.3s;
 }
 
+/*
 input:focus {
   border-color: #388e3c;
 }
+*/
 
-button {
+.botao {
   background-color: #4caf50;
   color: #ffffff;
   padding: 10px 20px;

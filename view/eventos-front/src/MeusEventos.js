@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './meusEventos.css';
+//import './meusEventos.css';
 import Logo from './img/logo.png';
 import { useNavigate } from 'react-router-dom';
 
@@ -69,7 +69,7 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
                                     <a href="/">Oi, {usuario.nome}</a>
                                     <ul>
                                         <li><a href="/criarEvento">Criar Evento</a></li>
-                                        <li><a href="/meusEventos">Meus Eventos</a></li>
+                                        <li><a href="/sobre">Meus Eventos</a></li>
                                         <li><a href="/">Meus Ingressos</a></li>
                                         <li onClick={logout_}><button>Sair</button></li>
                                     </ul>
