@@ -6,6 +6,7 @@ import Sobre from './Sobre';
 import Login from './Login';
 import CriarEvento from './CriarEvento';
 import MeusEventos from './MeusEventos';
+import MeusIngressos from './MeusIngressos';
 import { useEffect, useState } from 'react';
 
 // |=======| FUNÇÃO DA APLICAÇÃO |=======|
@@ -35,25 +36,42 @@ function App() {
   });
 
   
-    // |======= OBJETO EVENTO =======|
-    const evento = {
-      id: 0,
-      nome: '',
-      valor: 0.0,
-      data: '',
-      descricao: '',
-      imagem: '',
-      usuarioId: objUsuario.id
-    };
+  // |======= OBJETO EVENTO =======|
+  const evento = {
+    id: 0,
+    nome: '',
+    valor: 0.0,
+    data: '',
+    descricao: '',
+    imagem: '',
+    usuarioId: objUsuario.id
+  };
 
   const [usuarios, setUsuarios] = useState([]);
   const [eventos, setEvento] = useState([]);
   const [objEvento, setObjEvento] = useState(evento);
   
+  // |======= OBJETO INGRESSO =======|
+  const ingresso = {
+    id: 0,
+    valido: true,
+    eventoId: objEvento.id,
+    usuarioId: objUsuario.id
+  };
+
+  const [ingressos, setIngresso] = useState([]);
+  const [objIngresso, setObjIngresso] = useState(ingresso)
 
   // |=======| USEEFFECT |=======|
 
-  // ======= LISTAR EVENTO DO BACK =======
+  // ======= LISTAR INGRESSO DO BACK =======
+  useEffect(() => {
+    fetch("http://localhost:8080/listarIngressos")
+      .then(retorno => retorno.json())
+      .then(retorno_convertido => setIngresso(retorno_convertido))
+  })
+
+  // ======= LISTAR EVENTOS DO BACK =======
   useEffect(() => {
     fetch("http://localhost:8080/listarEventos")
       .then(retorno => retorno.json())
@@ -260,7 +278,7 @@ function App() {
           <Route path='/login' element={<Login eventoTeclado={aoDigitarUsuario} cadastrarUsuario={cadastrarUsuario} login={logar} />} />
           <Route path='/criarEvento' element={<CriarEvento eventoTeclado={aoDigitarEvento} cadastrarEvento={cadastrarEvento} />} />
           <Route path='/meusEventos' element={<MeusEventos logado={logado} listaEvento={eventos} usuario={objUsuario} logout={logout} excluirEvento={excluirEvento} selecionarEvento={selecionarEvento} eventoTeclado={aoDigitarEvento} editarEvento={editarEvento}/>} />
-          {/*<Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />*/}
+          <Route path='/meusIngressos' element={<MeusIngressos logado={logado} usuario={objUsuario} logout={logout} />} />
         </Routes>
       </Router>
     </div>

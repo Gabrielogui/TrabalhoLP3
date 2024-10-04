@@ -31,7 +31,7 @@ function Home({ logado, listaEvento, usuario, logout }){
                                 <ul>
                                     <li><a href="/criarEvento">Criar Evento</a></li>
                                     <li><a href="/meusEventos">Meus Eventos</a></li>
-                                    <li><a href="/">Meus Ingressos</a></li>
+                                    <li><a href="/meusIngressos">Meus Ingressos</a></li>
                                     <li onClick={logout_}><button>Sair</button></li>
                                 </ul>
                             </li>
