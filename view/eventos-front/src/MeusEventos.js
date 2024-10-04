@@ -65,6 +65,10 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
         setEventoEditado({ ...eventoEditado, [name]: value }); // Atualiza os valores do formulário
     };
 
+    const handleExcluir = (evento) => {
+        excluirEvento(evento)
+    }
+
     // |=======| RETORNO |=======|
     return (
         <div>
@@ -104,7 +108,7 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
                             <span className={classes.event_valor}>{evento.valor}</span>                          
                                 
                             <button className={classes.botao} onClick={() => handleEdit(evento)}>Editar</button>
-                            <button className={classes.botao} onClick={excluirEvento}>Excluir</button>               
+                            <button className={classes.botao} onClick={() => handleExcluir(evento)}>Excluir</button>               
 
                         </div>
                     ))}

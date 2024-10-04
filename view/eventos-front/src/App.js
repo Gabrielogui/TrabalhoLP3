@@ -220,9 +220,9 @@ function App() {
   }
 
   // |=======| EXCLUIR EVENTO |=======|
-  const excluirEvento = () => {
-    console.log('oioi', objEvento.id);
-    fetch("http://localhost:8080/deletarEvento/"+objEvento.id, {
+  const excluirEvento = (eventoExcluido) => {
+    console.log('oioi', eventoExcluido.id);
+    fetch("http://localhost:8080/deletarEvento/"+eventoExcluido.id, {
       method: 'delete',
       headers: {
         'content-type': 'application/json',
@@ -237,7 +237,7 @@ function App() {
       let vetorTemp = [...eventos];
       //id
       let indice = vetorTemp.findIndex((p) => {
-        return p.id === objEvento.id;
+        return p.id === eventoExcluido.id;
       });
 
       // Remover produto do vetor temporário
