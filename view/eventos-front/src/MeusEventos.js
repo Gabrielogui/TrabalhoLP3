@@ -24,7 +24,7 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
 
     const handleEdit = (evento) => {
         setEditandoEvento(evento);
-        setEventoEditado(evento); // Preenche o formulário com os dados atuais do evento
+        setEventoEditado({ ...evento }); // Preenche o formulário com os dados atuais do evento
     };
 
     // |=======| OBJETO EVENTO EDITADO |=======|
@@ -50,15 +50,26 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
             });
     };
 */
-    const handleSave = (eventoAtualizado) => {
-        axios.put(`/editarEvento/${eventoAtualizado.id}`, eventoAtualizado)
-            .then(response => {
-                setMeusEventos(meusEventos.map(evento => evento.id === eventoAtualizado.id ? response.data : evento));
-                setEditandoEvento(null);
-            })
-            .catch(err => {
-                console.error("Erro ao atualizar evento", err);
-            });
+    const handleSave = () => {
+        // Chama a função editarEvento do app.js, passando o evento atualizado
+        const updatedEvento = {
+            id: eventoEditado.id,
+            nome: eventoEditado.nome,
+            valor: eventoEditado.valor,
+            data: eventoEditado.data,
+            descricao: eventoEditado.descricao,
+            imagem: eventoEditado.imagem,
+            usuario: { id: usuario.id }  // Passa o ID do usuário associado
+        };
+        editarEvento(updatedEvento).then((novoEvento) => {
+            // Atualiza a lista de eventos com o evento editado
+            setMeusEventos(meusEventos.map(evento => 
+                evento.id === novoEvento.id ? novoEvento : evento
+            ));
+            setEditandoEvento(false); // Fecha o modo de edição após salvar
+        }).catch(error => {
+            console.error("Erro ao editar o evento", error);
+        });
     };
     
     const handleChange = (e) => {
@@ -71,6 +82,10 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
     const selecionar = (id) => {
         setSelecionado(true);
         selecionarEvento(id);
+
+    }
+
+    const mudar = () => {
 
     }
 
@@ -127,22 +142,22 @@ function MeusEventos({ logado, listaEvento, usuario, logout, excluirEvento, sele
                         <form onSubmit={(e) => { e.preventDefault(); handleSave(); }}>
                             <label>
                                 Nome:
-                                <input type="text" name="nome" value={eventoEditado.nome} onChange={eventoTeclado} />
+                                <input type="text" name="nome" value={eventoEditado.nome} onChange={handleChange} />
                             </label>
                             <label>
                                 Local:
-                                <input type='text' name="Local" value={eventoEditado.descricao} onChange={eventoTeclado} />
+                                <input type='text' name="descricao" value={eventoEditado.descricao} onChange={handleChange} />
                             </label>
                             <label>
                                 Valor:
                                 <input
-                                    type="number" name="valor" value={eventoEditado.valor} onChange={eventoTeclado} />
+                                    type="number" name="valor" value={eventoEditado.valor} onChange={handleChange} />
                             </label>
                             <label>
                                 Data:
-                                <input type="date" name="data" value={eventoEditado.data} onChange={eventoTeclado} />
+                                <input type="date" name="data" value={eventoEditado.data} onChange={handleChange} />
                             </label>
-                            <button onClick={editarEvento}>Salvar</button>
+                            <button type="submit">Salvar</button>
                             <button onClick={() => setEditandoEvento(null)}>Cancelar</button>
                         </form>
                     </div>

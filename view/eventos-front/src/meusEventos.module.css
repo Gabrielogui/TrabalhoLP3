@@ -126,6 +126,66 @@ body {
     flex-direction: column;
 }
 
+.edit_form {
+    background-color: #ffffff; /* Fundo branco para contraste */
+    border-radius: 12px; /* Borda levemente arredondada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 20px; /* Espaçamento interno */
+    max-width: 500px; /* Limita a largura do card */
+    margin: 20px auto; /* Centraliza o card horizontalmente */
+    text-align: center; /* Centraliza o conteúdo */
+    margin-top: 0;
+}
+
+.edit_form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_form label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.edit_form input[type="text"],
+.edit_form input[type="number"],
+.edit_form input[type="date"] {
+    width: 100%;
+    padding: 12px; /* Adiciona espaço interno */
+    margin-bottom: 15px; /* Espaçamento entre os campos */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 8px; /* Bordas arredondadas */
+    font-size: 16px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra interna */
+}
+
+.edit_form button {
+    padding: 12px 20px; /* Tamanho do botão */
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745; /* Verde para o botão "Salvar" */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
+}
+
+.edit_form button:hover {
+    background-color: #218838; /* Efeito ao passar o mouse */
+}
+
+.edit_form button[type="button"] {
+    background-color: #dc3545; /* Vermelho para o botão "Cancelar" */
+    margin-left: 10px; /* Espaçamento para separá-lo do botão "Salvar" */
+}
+
+.edit_form button[type="button"]:hover {
+    background-color: #c82333; /* Efeito ao passar o mouse */
+}
+
 #logo-footer {
     width: 80px;
 }

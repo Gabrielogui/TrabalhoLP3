@@ -174,18 +174,11 @@ function App() {
   };
   
   // |=======| EDITAR EVENTO |=======|
-  const editarEvento = () => {
-    const updatedEvento = {
-      nome: objEvento.nome,
-      valor: objEvento.valor,
-      data: objEvento.data,
-      descricao: objEvento.descricao,
-      imagem: objEvento.imagem,
-      usuario: { id: objUsuario.id } // Inclui apenas o ID do usuário
-    };
-
-    fetch("http://localhost:8080/editarEvento", {
-      method: 'post',
+  const editarEvento = (updatedEvento) => {
+    console.log(updatedEvento)
+    console.log(updatedEvento.usuario)
+    return fetch("http://localhost:8080/editarEvento", {
+      method: 'put',
       body: JSON.stringify(updatedEvento),
       headers: {
         'content-type': 'application/json',
@@ -200,6 +193,7 @@ function App() {
         console.log(data);
         setEvento([...eventos, data]);
         alert("Editado com sucesso!");
+        return data
       }
     })
     .catch(error => {

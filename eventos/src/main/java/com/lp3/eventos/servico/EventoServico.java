@@ -34,7 +34,12 @@ public class EventoServico {
 
     // |=======| EDITAR EVENTOS |=======|
     public ResponseEntity<?> editar(@RequestBody Evento evento){
-        return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.OK);
+        if(evento.getNome().equals(" ") || evento.getDescricao().equals(" ") || evento.getData().equals("") || evento.getUsuario().getId() == null){
+            respostaModelo.setMensagem("Preencha todos os campos");
+            return new ResponseEntity<RespostaModelo>(respostaModelo, HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<Evento>(eventoRepositorio.save(evento), HttpStatus.OK);
+        }
     }
 
     // |=======| REMOVER EVENTOS |=======|
